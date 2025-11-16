@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hamba Eats | Local Favours, Delivered Fast</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: #f97316;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    header p {
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .cart-btn {
+      background: white;
+      color: #f97316;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .restaurant-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+    }
+
+    .restaurant-info {
+      padding: 15px;
+    }
+
+    .restaurant-info h2 {
+      color: #f97316;
+    }
+
+    .menu {
+      margin-top: 20px;
+    }
+
+    .menu-category {
+      margin-bottom: 20px;
+    }
+
+    .menu-category h3 {
+      color: #f97316;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .menu-item .food-name {
+      flex: 2;
+      text-align: left;
+      margin-right: 10px;
+    }
+
+    .menu-item .price {
+      flex: 1;
+      text-align: center;
+      font-weight: 600;
+      min-width: 80px;
+      display: inline-block;
+    }
+
+    .menu-item button {
+      flex: 1;
+      margin-left: 10px;
+      min-width: 70px;
+      background: #f97316;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .menu-item button:hover {
+      background: #ea580c;
+    }
+
+    .cart-section {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 25px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .cart-section h3 {
+      color: #f97316;
+      margin-bottom: 10px;
+    }
+
+    .cart-list {
+      list-style: none;
+      margin-bottom: 10px;
+    }
+
+    .cart-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-list button {
+      color: red;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .checkout-btn {
+      background: #22c55e;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    footer {
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .menu-item button {
+        margin-top: 5px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hamba Eats</h1>
+    <p>Local Favours, Delivered Fast</p>
+    <button class="cart-btn" onclick="showCart()">Cart (<span id='cart-count'>0</span>)</button>
+  </header>
+
+  <div class="container">
+    <div class="restaurant-card">
+      <div style="background:#f97316; color:#fff; text-align:center; padding:30px 0; font-size:2rem; font-weight:700; letter-spacing:2px;">
+        Food_By_N
+      </div>
+      <div class="restaurant-info">
+        <h2>Menu</h2>
+        <div class="menu">
+          <div class="menu-category">
+            <h3>Platter for One</h3>
+            <div class="menu-item">
+              <span class="food-name">Braai Delight Platter</span>
+              <span class="price">R150</span>
+              <button onclick="addToCart('Braai Delight Platter',150)">Add</button>
+            </div>
+            <div class="menu-item">
+              <span class="food-name">Meat Lover’s Platter</span>
+              <span class="price">R180</span>
+              <button onclick="addToCart('Meat Lover’s Platter',180)">Add</button>
+            </div>
+            <div class="menu-item">
+              <span class="food-name">Sosaties Feast Platter</span>
+              <span class="price">R160</span>
+              <button onclick="addToCart('Sosaties Feast Platter',160)">Add</button>
+            </div>
+            <div class="menu-item">
+              <span class="food-name">Steakhouse Platter</span>
+              <span class="price">R210</span>
+              <button onclick="addToCart('Steakhouse Platter',210)">Add</button>
+            </div>
+          </div>
+
+          <div class="menu-category">
+            <h3>Platter for Sharing</h3>
+            <div class="menu-item">
+              <span class="food-name">Ultimate Braai Master Platter</span>
+              <span class="price">R250</span>
+              <button onclick="addToCart('Ultimate Braai Master Platter',250)">Add</button>
+            </div>
+            <div class="menu-item">
+              <span class="food-name">Cluckin’ Good Platter</span>
+              <span class="price">R280</span>
+              <button onclick="addToCart('Cluckin’ Good Platter',280)">Add</button>
+            </div>
+            <div class="menu-item">
+              <span class="food-name">Meat Lover’s Delight Platter</span>
+              <span class="price">R300</span>
+              <button onclick="addToCart('Meat Lover’s Delight Platter',300)">Add</button>
+            </div>
+            <div class="menu-item">
+              <span class="food-name">Braai Feast Platter</span>
+              <span class="price">R350</span>
+              <button onclick="addToCart('Braai Feast Platter',350)">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-section" id="cart-section">
+      <h3>Your Cart</h3>
+      <ul class="cart-list" id="cart-list"></ul>
+      <p><strong>Total: R<span id="cart-total">0</span></strong></p>
+      <button class="checkout-btn" onclick="checkout()">Order via WhatsApp</button>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Hamba Eats — Local Favours, Delivered Fast
+  </footer>
+
+  <script>
+    const cart = [];
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+      showCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      document.getElementById("cart-count").textContent = cart.length;
+      const list = document.getElementById("cart-list");
+      list.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, i) => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.innerHTML = `${item.name} - R${item.price} <button onclick="removeFromCart(${i})">x</button>`;
+        list.appendChild(li);
+      });
+
+      document.getElementById("cart-total").textContent = total;
+    }
+
+    function showCart() {
+      const cartSec = document.getElementById("cart-section");
+      cartSec.style.display = "block";
+      cartSec.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      const address = prompt("Please enter your delivery address:");
+      if (!address) {
+        alert("Address is required to place your order.");
+        return;
+      }
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      const message = `Hi Food_by_N! I'd like to order: ${cart.map(c => c.name).join(", ")}. Total: R${total}. My delivery address is: ${address}`;
+      window.open(`https://wa.me/27718164239?text=${encodeURIComponent(message)}`, "_blank");
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
