@@ -1,2 +1,10 @@
-# Small-Scale-Food-Delivery-Hamba-Eats
-Hamba Eats is a simple, fast food-ordering web app designed for local restaurants in small towns. Users can browse menus, add items to cart, and place orders via WhatsApp. Built with a lightweight front end and a scalable structure for future backend expansion.
+# Hamba Eats Backend (Node.js + Express + MongoDB)
+
+## Setup (Local)
+1. Clone or create the folder and files.
+2. Copy `.env.example` to `.env` and fill values (MONGODB_URI, JWT_SECRET, Twilio keys if used).
+3. Install Node.js (v16+) and npm.
+4. Run:
+   ```bash
+   npm install
+   npm run dev   # starts with nodemon if installed
